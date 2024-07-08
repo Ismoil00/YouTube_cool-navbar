@@ -1,0 +1,122 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #000000;
+  --navBg: #333;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg);
+  display: grid;
+  place-content: center;
+  font-family: sans-serif;
+}
+
+.navbar {
+  width: 600px;
+  height: 120px;
+  padding: 0 3rem;
+  border-radius: 1rem;
+  background-color: var(--navBg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* gap: 1rem; */
+  box-sizing: content-box;
+  z-index: 0;
+  position: relative;
+}
+
+.navbar__item {
+  width: 120px;
+  height: 100%;
+  /* background-color: lightcoral; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  stroke: white;
+  fill: transparent;
+  stroke-width: 1.2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 400;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon.active {
+  stroke: black;
+  transform: translateY(-105%);
+}
+
+.navbar__item span {
+  position: absolute;
+  bottom: 20%;
+  color: white;
+  text-transform: capitalize;
+  opacity: 0;
+}
+
+.icon.active ~ span {
+  opacity: 1;
+}
+
+.revealText {
+  animation: reveal 0.3s ease-in-out forwards;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.indicator {
+  width: 120px;
+  height: 120px;
+  background-color: lightgreen;
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1;
+  top: 0;
+  transform: translateY(-50%);
+  border: 1rem solid var(--bg);
+  left: 3rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.corner {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 50%;
+  fill: white;
+  fill: var(--bg);
+}
+
+.left {
+  left: -52%;
+  transform: rotateY(180deg);
+}
+
+.right {
+  right: -52%;
+}
