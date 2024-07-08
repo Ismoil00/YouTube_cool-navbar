@@ -7,10 +7,11 @@
 }
 
 :root {
-  --bg: #000000;
-  --navBg: #333;
-  --cubic-bezier: ease;
-  /* --cubic-bezier: cubic-bezier(0, 1, 1, 1); */
+  --bg: #111111;
+  --navBg: #1e1e1e;
+  --green: #56d453;
+  --ease-out: cubic-bezier(0, 0.55, 0.55, 1);
+  --ease-in: cubic-bezier(0.55, 0.01, 1, 1);
 }
 
 .container {
@@ -56,12 +57,30 @@
   stroke-miterlimit: 10;
   stroke-dasharray: 400;
   cursor: pointer;
-  transition: transform 0.3s var(--cubic-bezier);
 }
 
 .icon.active {
   stroke: black;
   transform: translateY(-105%);
+  opacity: 0;
+  stroke-width: 1.5px;
+  animation: fade 0.5s var(--ease-out) 0.3s forwards,
+    stroke 0.5s var(--ease-out) 0.3s reverse;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 400;
+  }
 }
 
 .navbar__item span {
@@ -69,32 +88,36 @@
   bottom: 10%;
   color: white;
   text-transform: capitalize;
-  opacity: 0;
+  overflow: hidden;
+}
+
+.navbar__item span::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: var(--navBg);
+  position: absolute;
 }
 
 .icon.active ~ span {
-  opacity: 1;
+  bottom: 20%;
 }
 
-.revealText {
-  animation: reveal 0.3s var(--cubic-bezier) forwards;
+.icon.active ~ span::before {
+  animation: reveal 0.5s var(--ease-in) forwards;
 }
 
 @keyframes reveal {
-  0% {
-    opacity: 0;
-    bottom: 10%;
-  }
   100% {
-    opacity: 1;
-    bottom: 20%;
+    transform: translateX(100%);
   }
 }
 
+/* indicator */
 .indicator {
   width: 120px;
   height: 120px;
-  background-color: lightgreen;
+  background-color: var(--green);
   position: absolute;
   border-radius: 50%;
   z-index: 1;
@@ -102,7 +125,7 @@
   transform: translateY(-50%);
   border: 1rem solid var(--bg);
   left: 3rem;
-  transition: transform 0.3s var(--cubic-bezier);
+  transition: transform 0.3s var(--ease-out);
 }
 
 .corner {
