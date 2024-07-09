@@ -1,0 +1,87 @@
+:root {
+  --bg: #111111;
+  --navBg: #1e1e1e;
+  --green: ;
+  --ease-out: ;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: var(--bg);
+  display: grid;
+  place-content: center;
+  font-family: sans-serif;
+}
+
+.navbar {
+  width: 600px;
+  height: 120px;
+  box-sizing: content-box;
+  padding: 0 3rem;
+  border-radius: 1rem;
+  background-color: var(--navBg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 0;
+}
+
+.navbar__item {
+  width: 120px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  stroke: white;
+  fill: transparent;
+  stroke-width: 1.2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 400;
+  cursor: pointer;
+}
+
+.icon.active {
+  stroke: black;
+  transform: translateY(-105%);
+  stroke-width: 1.5px;
+  opacity: 0;
+  animation: fade 0.5 var(--ease-out) forwards;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.navbar__item span {
+  color: white;
+  text-transform: capitalize;
+  position: absolute;
+  bottom: 10%;
+}
+
+/* INDICATOR */
+.indicator {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--green);
+  position: absolute;
+  left: 3rem;
+  transform: translateY(-50%);
+  border-radius: 1rem solid var(--bg);
+  z-index: 1;
+}
