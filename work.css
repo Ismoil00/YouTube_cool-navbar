@@ -85,3 +85,43 @@
   border-radius: 1rem solid var(--bg);
   z-index: 1;
 }
+
+:root {
+  --bg: #111111;
+  --navBg: #1e1e1e;
+}
+
+main {
+  background-color: var(--bg);
+  display: flex;
+  align-items: grid;
+  place-content: center;
+  font-family: sans-serif;
+}
+
+.navbar {
+  width: 600px;
+  height: 120px;
+  padding: 0 3rem;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--navBg);
+}
+
+.navbar__item {
+  width: 120px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 3.5rem;
+  height: 3.5rem;
+
+}
+
